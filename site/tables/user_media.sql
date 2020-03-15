@@ -1,0 +1,23 @@
+DROP TYPE IF EXISTS USER_MEDIA_CONTENT_TYPE CASCADE;
+CREATE TYPE USER_MEDIA_CONTENT_TYPE AS ENUM
+(
+    'image',
+    'audio',
+    'video'
+);
+DROP TABLE IF EXISTS user_media;
+CREATE TABLE user_media
+(
+    ID BIGSERIAL NOT NULL PRIMARY KEY,
+    user_id BIGINT REFERENCES users(id),
+    uploaded BOOL DEFAULT FALSE,
+    deleted BOOL DEFAULT FALSE,
+    content_type USER_MEDIA_CONTENT_TYPE DEFAULT 'image',
+    insert_date TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    update_date TIMESTAMP WITHOUT TIME ZONE
+);
+
+ALTER TABLE site.user_profile ADD COLUMN image_id BIGINT REFERENCES user_media(id) UNIQUE;
+
+CREATE TRIGGER update_date BEFORE UPDATE ON user_media FOR EACH ROW EXECUTE FUNCTION trigger_update_date();
+
