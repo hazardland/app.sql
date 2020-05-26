@@ -41,14 +41,13 @@ BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE FUNCTION trigger_update_date();
 
--- INSERT INTO users (username, email, password)
--- VALUES
--- (
---     'biohazard',
---     'hazardland@gmail.com',
---     CRYPT('irakli11',GEN_SALT('BF',8))
--- );
+INSERT INTO users (username, email, password)
+VALUES
+(
+    'biohazard',
+    'hazardland@gmail.com',
+    CRYPT('irakli11',GEN_SALT('BF',8))
+);
 
 
 ALTER TABLE site.users ADD COLUMN online BOOLEAN DEFAULT FALSE;
-CREATE INDEX online_index ON site.users (active) WHERE active;

@@ -3,8 +3,8 @@ CREATE SCHEMA IF NOT EXISTS site;
 SET search_path TO site;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
-CREATE EXTENSION cube;
-CREATE EXTENSION earthdistance;
+-- CREATE EXTENSION cube;
+-- CREATE EXTENSION earthdistance;
 
 /*
 yum install postgresql11-contrib

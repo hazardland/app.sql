@@ -23,28 +23,28 @@ CREATE UNIQUE INDEX ON sendmail_template (name);
 CREATE TRIGGER update_date BEFORE UPDATE ON sendmail_template FOR EACH ROW EXECUTE FUNCTION trigger_update_date();
 
 INSERT INTO sendmail_template
-(name, "from", subject, html, text)
+(name, from_name, from_email, subject, html, text)
 VALUES
 (
     'registration',
+    'Site',
     'contact@site.com',
-    'From us',
     'Welcome',
     'hi {user_username} {token}',
     'hi {user_username} {token}'
 ),
 (
     'email_verification',
+    'Site',
     'contact@site.com',
-    'From us',
     'Welcome',
     'hi {user_username} {token}',
     'hi {user_username} {token}'
 ),
 (
     'password_recovery',
+    'Site',
     'contact@site.com',
-    'From us',
     'Password Recovery',
     'hi {user_username} {token}',
     'hi {user_username} {token}'

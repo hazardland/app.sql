@@ -3,6 +3,8 @@ PostgreSQL Database Template
 
 Whenever starting a small/medium project it is wise to have some database template because every time you waste time on a task similar to which you have solved in the past you are getting a bit dumber.
 
+Use ```py pack.py``` which will generate single ```pack.sql``` file which will run smoothly on your PostgreSQL server (version >= 11).
+
 Repository is centred around solving user account related tasks and uses stored procedures and triggers for a common challanges. It is divided as a site and admin databases.
 
 ### Site database
@@ -68,6 +70,7 @@ Repository is centred around solving user account related tasks and uses stored 
     │       users.sql # The thing
     │       user_profile.sql # User profile
     │       user_history.sql # User account change history
+    │       user_activity.sql # User activity grouped log
     │       user_media.sql # For uploading images, videos and audio
     │       user_session.sql # User auth session
     │       user_token.sql # User tokens
@@ -75,13 +78,8 @@ Repository is centred around solving user account related tasks and uses stored 
     │       sendmail.sql # Sent mails
     │       sendmail_template.sql # Email templates where you configure subject, from, email text and etc.
     │       debug.sql
-    │       chat_friend.sql
-    │       chat_media.sql
-    │       chat_message.sql
-    │       chat_text.sql
     │
     └───triggers
             user_email_change.sql # Send new email confirmation email
             user_profile_create.sql # Create user profile after users table insert
-            chat_friend_activate.sql
 ```
